@@ -1,0 +1,40 @@
+@echo off
+cd /d %~dp0
+
+echo apk2WSA script made by Yokokiri-Cha! (Sorry for my poor English...)
+echo Windows Subsystem for Android APK Sideloader
+echo Disclaimer
+echo The producer is not responsible for any problems or damages caused by using this program. Also, this is not an official application installation procedure.
+pause;
+echo Let's get started. First, make sure adb is installed correctly.
+echo;
+adb
+echo;
+echo Do you see a large number of strings? If so, press any key. If not, close this screen, set up the adb environment, and try again.
+pause;
+echo Downloading required files. Please wait.....
+echo;
+bitsadmin /transfer chayastore https://github.com/Yokokiri-Cha/Chayastore/releases/download/chayastore/chaya.apk  %cd%/chaya.apk
+echo;
+echo Download completed.
+echo Press any key to proceed to the next step.
+echo;
+pause;
+echo Let's start the installation process.
+echo First, open the Windows Subsystem Settings application. Next, disable Advanced Networking, open the Developer menu, and enable Developer Mode.
+echo When everything is done, press "File" at the top of the System tab, wait until the File Manager is fully activated, and then press any key on this screen.
+pause;
+echo Connecting...
+echo; 
+adb connect 127.0.0.1:58526
+echo;
+echo If the message "Unable to connect" is not displayed, it is OK.
+echo;
+pause;
+echo Installation task started!
+echo;
+adb install -r -d chaya.apk
+echo;
+echo Task finished!!Thank you for using my script!
+echo Press any key to close.
+pause;
